@@ -8,6 +8,7 @@ const Header = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const isSignedIn = !!localStorage.getItem("accessToken");
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-500 px-6">
