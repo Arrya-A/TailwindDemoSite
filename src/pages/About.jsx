@@ -18,21 +18,17 @@ const About = () => {
             stand for all-inclusive digital experience with a focus on long-term
             vision.
           </p>
-          
-            
             <div>
               <button className="bg-emerald-500 hover:bg-emerald-700 text-white rounded-full py-2 px-6 text-sm sm:text-base">
                     More Details
               </button>
             </div>
-         
         </div>
 
         {/* Image Section */}
         <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
           <img
             src="src/images/about.png"
-           
             className="w-full h-auto max-h-[500px] rounded-l-[3rem] rounded-br-[3rem] h-auto object-cover"
           />
         </div>

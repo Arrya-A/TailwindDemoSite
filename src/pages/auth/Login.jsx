@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
 import { useForm } from "react-hook-form";
 
-
 const defaultValues = {
   email: "",
   password: "",

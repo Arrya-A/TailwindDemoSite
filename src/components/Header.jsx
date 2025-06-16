@@ -1,76 +1,94 @@
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ islanding }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const navigate = useNavigate();
+  
+  const toggleMenu = () => setIsOpen(!isOpen);
   const isSignedIn = !!localStorage.getItem("accessToken");
+
+  const handleSignOut = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
   return (
-    <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-500 px-6">
-        <div className="flex justify-between items-center py-4 text-white">
-          <div className="text-xl font-bold">ANALAY</div>
+    <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-500 px-6">
+      <div className="flex justify-between items-center py-4 text-white">
+        <div className="text-xl font-bold">ANALAY</div>
 
+        {/* signed-in and not landing */}
+        {isSignedIn && !islanding && (
           <ul className="hidden md:flex space-x-6">
-            <li className="hover:font-bold">
-              <Link to="/home">Home</Link>
-            </li>
-            <li className="hover:font-bold">
-              <Link to="/aboutus">About Us</Link>
-            </li>
-            <li className="hover:font-bold">
-              <Link to="/project"> Our Projects</Link>
-            </li>
-            <li className="hover:font-bold">
-              <Link to="/contact">Contact Us</Link>
-            </li>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/aboutus">About Us</Link></li>
+            <li><Link to="/project">Our Projects</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
           </ul>
+        )}
 
-          <div className="hidden md:block pr-16">
+        {/* Desktop  */}
+        <div className="hidden md:flex items-center space-x-4">
+          {isSignedIn ? (
+            <button
+              onClick={handleSignOut}
+              className="bg-white text-emerald-500 rounded-full py-2 px-4"
+            >
+              Sign Out
+            </button>
+          ) : (
             <Link to="/login">
               <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
                 Sign In
               </button>
             </Link>
-          </div>
-
-          <div className="md:hidden">
-            <button onClick={toggleMenu}>
-              {isOpen ? (
-                <FontAwesomeIcon icon={faX} />
-              ) : (
-                <FontAwesomeIcon icon={faBars} />
-              )}
-            </button>
-          </div>
+          )}
         </div>
-        {isOpen && (
-          <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
-            <Link to="/" onClick={toggleMenu}>
-              Home
-            </Link>
-            <Link to="/aboutus" onClick={toggleMenu}>
-              About Us
-            </Link>
-            <Link to="/services" onClick={toggleMenu}>
-              Services
-            </Link>
-            <Link to="/contact" onClick={toggleMenu}>
-              Contact Us
-            </Link>
+
+        {/* Mobile  */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu}>
+            <FontAwesomeIcon icon={isOpen ? faX : faBars} />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
+          {isSignedIn && !islanding && (
+            <>
+              <Link to="/home" onClick={toggleMenu}>Home</Link>
+              <Link to="/aboutus" onClick={toggleMenu}>About Us</Link>
+              <Link to="/project" onClick={toggleMenu}>Our Projects</Link>
+              <Link to="/contact" onClick={toggleMenu}>Contact Us</Link>
+            </>
+          )}
+
+          {isSignedIn ? (
+            <button
+              onClick={() => {
+                handleSignOut();
+                setIsOpen(false);
+              }}
+              className="bg-white text-emerald-500 rounded-full py-2 px-4"
+            >
+              Sign Out
+            </button>
+          ) : (
             <Link to="/login" onClick={toggleMenu}>
               <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
                 Sign In
               </button>
             </Link>
-          </div>
-        )}
-      </div>
-    </>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 
