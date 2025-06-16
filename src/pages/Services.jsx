@@ -20,7 +20,7 @@ const Services = () => {
               <h4 className="text-lg font-semibold my-1">Web Development</h4>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
-                quia aperiam, repellendus
+                quia aperiam, repellendus.
               </p>
               <button className="text-white mt-2 bg-emerald-500 rounded-full py-2 px-4 ">
                 More Details
@@ -88,9 +88,7 @@ const Services = () => {
               <h4 className="text-lg font-bold my-1 text-emerald-500">
                 SERVICES
               </h4>
-              <h1 className="text-xl font-bold">
-                Our Services Include.
-              </h1>
+              <h1 className="text-xl font-bold">Our Services Include.</h1>
               <p>
                 Analay has over 100 ambitious and dedicated employees
                 all-inclusive digital experience with a focus on long-term
