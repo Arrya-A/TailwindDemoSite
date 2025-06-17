@@ -1,12 +1,14 @@
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faAtom, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = ({ islanding }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const currentTab = location.pathname;
   const navigate = useNavigate();
-  
+
   const toggleMenu = () => setIsOpen(!isOpen);
   const isSignedIn = !!localStorage.getItem("accessToken");
 
@@ -19,15 +21,36 @@ const Header = ({ islanding }) => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-500 px-6">
       <div className="flex justify-between items-center py-4 text-white">
-        <div className="text-xl font-bold">ANALAY</div>
+        <div id="brand" className="text-xl font-bold"><FontAwesomeIcon icon={faAtom} className="mr-1" />DigiCraft</div>
 
         {/* signed-in and not landing */}
         {isSignedIn && !islanding && (
           <ul className="hidden md:flex space-x-6">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/aboutus">About Us</Link></li>
-            <li><Link to="/project">Our Projects</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
+            <li>
+              <Link
+                to="/home"
+                className={`px-3 py-1 rounded-full ${
+                  currentTab === "/home" ? "bg-white text-emerald-500" : ""
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/aboutus" className={`px-3 py-1 rounded-full ${
+                  currentTab === "/aboutus" ? "bg-white text-emerald-500" : ""
+                }`}>About Us</Link>
+            </li>
+            <li>
+              <Link to="/project" className={`px-3 py-1 rounded-full ${
+                  currentTab === "/project" ? "bg-white text-emerald-500" : ""
+                }`}>Our Projects</Link>
+            </li>
+            <li>
+              <Link to="/contact" className={`px-3 py-1 rounded-full ${
+                  currentTab === "/contact" ? "bg-white text-emerald-500" : ""
+                }`}>Contact Us</Link>
+            </li>
           </ul>
         )}
 
@@ -62,10 +85,18 @@ const Header = ({ islanding }) => {
         <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
           {isSignedIn && !islanding && (
             <>
-              <Link to="/home" onClick={toggleMenu}>Home</Link>
-              <Link to="/aboutus" onClick={toggleMenu}>About Us</Link>
-              <Link to="/project" onClick={toggleMenu}>Our Projects</Link>
-              <Link to="/contact" onClick={toggleMenu}>Contact Us</Link>
+              <Link to="/home" onClick={toggleMenu}>
+                Home
+              </Link>
+              <Link to="/aboutus" onClick={toggleMenu}>
+                About Us
+              </Link>
+              <Link to="/project" onClick={toggleMenu}>
+                Our Projects
+              </Link>
+              <Link to="/contact" onClick={toggleMenu}>
+                Contact Us
+              </Link>
             </>
           )}
 

@@ -1,13 +1,15 @@
+import { faAtom } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const Footer = () => {
   return (
-    <div className="py-8 px-4 bg-emerald-200 ">
+    <div className="py-8 px-4 bg-emerald-500 text-white ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
         <div className="hidden lg:block lg:col-span-1"></div>
 
         <div className="lg:col-span-4">
-          <h1 className="text-emerald-500 font-bold text-lg mb-2">Analay</h1>
+          <h1 id="brand" className=" font-bold text-lg mb-2"><FontAwesomeIcon icon={faAtom} className="mr-1" />DigiCraft</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere eum
             recusandae itaque distinctio quia illum, accusantium sint qui quasi

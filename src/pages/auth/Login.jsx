@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
 import { useForm } from "react-hook-form";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const defaultValues = {
   email: "",
@@ -35,10 +36,13 @@ const Login = () => {
 
     if (success) {
       setLoginerror("");
-      alert("Login successful");
+      toast.success("Login successful")
       localStorage.setItem("accessToken", token);
       console.log("accessToken :", token);
-      navigate("/home");
+      setTimeout(() => {
+        navigate("/home");
+      }, 2000);
+      
     } else {
       setLoginerror(message);
     }
@@ -85,6 +89,8 @@ const Login = () => {
               </Link>
             </p>
           </form>
+          
+          <ToastContainer position="top-center" autoClose={3000} transition={Bounce} />
         </div>
       </div>
     </div>

@@ -17,10 +17,10 @@ const Information = () => {
                   your vision into a stunning online reality.
                 </p>
                 <Link to="/login">
-                  <button className="bg-black text-white rounded-full py-2 px-4 mt-6 flex items-center gap-x-2 mx-auto lg:mx-0">
+                  <button className="bg-emerald-500 text-white rounded-full py-2 px-4 mt-6 flex items-center gap-x-2 mx-auto lg:mx-0">
                     Get Started
                     <FontAwesomeIcon
-                      className="rounded-full bg-white text-black p-1 px-2"
+                      className="rounded-full bg-white text-emerald-500 p-1 px-2"
                       icon={faChevronRight}
                     />
                   </button>
