@@ -36,7 +36,7 @@ const Team = () => {
         {teams.map((team, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-xl shadow-md flex items-center gap-6"
+            className="bg-white p-6 rounded-xl shadow-md flex items-center gap-6 hover:bg-emerald-100 hover:rotate-1"
           >
             <img
               src={team.image}

@@ -15,7 +15,7 @@ const Cursor = () => {
   return (
     <>
       <div
-        className="fixed top-2 left-2 w-6 h-6 bg-emerald-500 rounded-full pointer-events-none z-[100] transition-transform duration-100 linear"
+        className="fixed border-4 border-emerald-600 top-2 left-2 w-6 h-6 bg-white rounded-full pointer-events-none z-[100] transition-transform duration-100 linear"
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
         }}

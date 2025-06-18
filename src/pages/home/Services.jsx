@@ -51,14 +51,15 @@ const services = [
 const Services = () => {
   return (
     <>
+    
       <div className="pt-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 py-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="bg-emerald-100 p-6 rounded-xl shadow-md hover:shadow-xl transition"
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.2 }}
+              className="bg-emerald-100 p-6 rounded-xl shadow-md hover:shadow-xl transition skew-12 "
+              // whileHover={{ scale: 1.03 }}
+              // transition={{ duration: 0.2 }}
             >
               <div className="text-4xl text-emerald-500 mb-2">
                 <FontAwesomeIcon icon={service.icon} />

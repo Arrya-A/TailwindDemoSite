@@ -11,14 +11,15 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
+import PNF from "./components/PNF";
 
 function App() {
   const location = useLocation();
   const hideHF = ["/login", "/register"].includes(location.pathname);
-
+  const hideCursor=["/login", "/register"].includes(location.pathname);
   return (
     <>
-    <Cursor/>
+      {!hideCursor && <Cursor />}
       <ScrollToTop />
       {!hideHF && <Header />}
       <Routes>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/project" element={<Project />} />
+        <Route path="*" element={<PNF />} />
       </Routes>
       {!hideHF && <Footer />}
     </>
