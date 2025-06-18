@@ -1,6 +1,5 @@
 import axiosInstance from "../../../utils/AxiosInstance";
 
-
 const useAuth = () => {
   const loginUser = async ({ email, password }) => {
     try {

@@ -26,7 +26,7 @@ const Info = () => {
                 startup Tanviro
               </p>
               <div className="flex sm:flex-row justify-center lg:justify-start items-center gap-4 ">
-                <Link to="/login">
+                <Link to="">
                   <button className="bg-emerald-500 hover:bg-emerald-700 text-white rounded-full py-2 px-4 flex items-center gap-x-2">
                     Get Started
                     <FontAwesomeIcon

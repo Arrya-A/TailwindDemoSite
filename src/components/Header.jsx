@@ -21,7 +21,10 @@ const Header = ({ islanding }) => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-emerald-500 px-6">
       <div className="flex justify-between items-center py-4 text-white">
-        <div id="brand" className="text-xl font-bold"><FontAwesomeIcon icon={faAtom} className="mr-1" />DigiCraft</div>
+        <div id="brand" className="text-xl font-bold">
+          <FontAwesomeIcon icon={faAtom} className="mr-1" />
+          DigiCraft
+        </div>
 
         {/* signed-in and not landing */}
         {isSignedIn && !islanding && (
@@ -37,19 +40,34 @@ const Header = ({ islanding }) => {
               </Link>
             </li>
             <li>
-              <Link to="/aboutus" className={`px-3 py-1 rounded-full ${
+              <Link
+                to="/aboutus"
+                className={`px-3 py-1 rounded-full ${
                   currentTab === "/aboutus" ? "bg-white text-emerald-500" : ""
-                }`}>About Us</Link>
+                }`}
+              >
+                About Us
+              </Link>
             </li>
             <li>
-              <Link to="/project" className={`px-3 py-1 rounded-full ${
+              <Link
+                to="/project"
+                className={`px-3 py-1 rounded-full ${
                   currentTab === "/project" ? "bg-white text-emerald-500" : ""
-                }`}>Our Projects</Link>
+                }`}
+              >
+                Our Projects
+              </Link>
             </li>
             <li>
-              <Link to="/contact" className={`px-3 py-1 rounded-full ${
+              <Link
+                to="/contact"
+                className={`px-3 py-1 rounded-full ${
                   currentTab === "/contact" ? "bg-white text-emerald-500" : ""
-                }`}>Contact Us</Link>
+                }`}
+              >
+                Contact Us
+              </Link>
             </li>
           </ul>
         )}

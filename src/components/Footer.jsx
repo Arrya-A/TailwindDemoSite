@@ -9,7 +9,10 @@ const Footer = () => {
         <div className="hidden lg:block lg:col-span-1"></div>
 
         <div className="lg:col-span-4">
-          <h1 id="brand" className=" font-bold text-lg mb-2"><FontAwesomeIcon icon={faAtom} className="mr-1" />DigiCraft</h1>
+          <h1 id="brand" className=" font-bold text-lg mb-2">
+            <FontAwesomeIcon icon={faAtom} className="mr-1" />
+            DigiCraft
+          </h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere eum
             recusandae itaque distinctio quia illum, accusantium sint qui quasi

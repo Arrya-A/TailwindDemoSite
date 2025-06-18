@@ -41,20 +41,20 @@ const Home = () => {
                   className="me-3 "
                 />
               </Link>
-             <Link to={"/"}>
+              <Link to={"/"}>
                 <FontAwesomeIcon
                   icon={faTwitter}
                   style={{ color: "#029EEC" }}
                   className="me-3 "
                 />
-             </Link>
-             <Link to={"/"}>
+              </Link>
+              <Link to={"/"}>
                 <FontAwesomeIcon
                   icon={faPinterest}
                   style={{ color: "#B7081B" }}
                   className="me-3 "
                 />
-             </Link>
+              </Link>
               <Link to={"/"}>
                 <FontAwesomeIcon
                   icon={faLinkedin}

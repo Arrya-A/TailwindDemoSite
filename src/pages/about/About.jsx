@@ -1,16 +1,16 @@
-import React from 'react'
-import Info from './Info'
-import Testimonials from './Testimonials'
+import React from "react";
+import Info from "./Info";
+import Testimonials from "./Testimonials";
 
 const About = () => {
   return (
     <>
-   <div>
-      <Info/>
-      <Testimonials/>
-   </div>
+      <div>
+        <Info />
+        <Testimonials />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

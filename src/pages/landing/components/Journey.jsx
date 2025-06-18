@@ -1,9 +1,10 @@
-import React from "react";
 const Journey = () => {
   return (
     <div className="min-h-[90vh] flex flex-col lg:flex-row items-center px-4 sm:px-8 lg:px-16 py-8 gap-8">
       <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left">
-        <h4 className="text-2xl font-bold mb-4 text-emerald-500">Our Journey</h4>
+        <h4 className="text-2xl font-bold mb-4 text-emerald-500">
+          Our Journey
+        </h4>
         <p>
           At DigiCraft, we have been transforming digital visions into reality
           since our inception. Our dedicated team of experts is passionate about

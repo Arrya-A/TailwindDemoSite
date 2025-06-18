@@ -10,6 +10,7 @@ import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import ScrollToTop from "./components/ScrollToTop";
+import Cursor from "./components/Cursor";
 
 function App() {
   const location = useLocation();
@@ -17,7 +18,8 @@ function App() {
 
   return (
     <>
-    <ScrollToTop/>
+    <Cursor/>
+      <ScrollToTop />
       {!hideHF && <Header />}
       <Routes>
         <Route path="/" element={<Landing />} />

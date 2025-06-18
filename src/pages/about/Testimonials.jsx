@@ -36,24 +36,29 @@ const Testimonials = () => {
       <p className="text-center py-4 text-gray-600">
         Trusted by top brands worldwide — see what they say about us.
       </p>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 py-8 ">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-             <div className="flex mb-2">
-                <img className="h-12 w-12 rounded-full" src={testimonial.image} alt="" />
-                <div className="ml-4">
-                  <p className="font-bold text-sm">{testimonial.name}</p>
-                  <p className="font-semibold text-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 py-8 ">
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={index}
+            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div className="flex mb-2">
+              <img
+                className="h-12 w-12 rounded-full"
+                src={testimonial.image}
+                alt=""
+              />
+              <div className="ml-4">
+                <p className="font-bold text-sm">{testimonial.name}</p>
+                <p className="font-semibold text-sm">
                   {testimonial.designation}, {testimonial.company}
                 </p>
-                </div>
-             </div>
-              
-              <p className="text-sm">{testimonial.description}</p>
+              </div>
             </div>
-          ))}
-        </div>
+            <p className="text-sm">{testimonial.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

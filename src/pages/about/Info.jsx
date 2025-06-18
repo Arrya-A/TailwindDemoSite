@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+
 const Info = () => {
   return (
     <motion.div
@@ -23,9 +23,9 @@ const Info = () => {
               Boosts Your Business With DigiCraft.
             </h1>
             <p className="text-gray-600 text-sm sm:text-base max-w-md mx-auto lg:mx-0">
-              DigiCraft has over 100 ambitious and dedicated employees working for
-              more than 50 partners, like Telenet, Proximus, Bolero, KLM,... We
-              stand for all-inclusive digital experience with a focus on
+              DigiCraft has over 100 ambitious and dedicated employees working
+              for more than 50 partners, like Telenet, Proximus, Bolero, KLM,...
+              We stand for all-inclusive digital experience with a focus on
               long-term vision.
             </p>
             <div>
