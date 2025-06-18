@@ -58,8 +58,8 @@ const Services = () => {
             <motion.div
               key={index}
               className="bg-emerald-100 p-6 rounded-xl shadow-md hover:shadow-xl transition skew-12 "
-              // whileHover={{ scale: 1.03 }}
-              // transition={{ duration: 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.2 }}
             >
               <div className="text-4xl text-emerald-500 mb-2">
                 <FontAwesomeIcon icon={service.icon} />

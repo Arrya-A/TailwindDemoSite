@@ -12,11 +12,13 @@ import About from "./pages/about/About";
 import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
 import PNF from "./components/PNF";
+import PrivateRoute from "./components/PrivateRoute";
+import Products from "./pages/products/Products";
 
 function App() {
   const location = useLocation();
   const hideHF = ["/login", "/register"].includes(location.pathname);
-  const hideCursor=["/login", "/register"].includes(location.pathname);
+  const hideCursor = ["/login", "/register"].includes(location.pathname);
   return (
     <>
       {!hideCursor && <Cursor />}
@@ -24,12 +26,16 @@ function App() {
       {!hideHF && <Header />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/aboutus" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/project" element={<Project />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/product" element={<Products />} />
+        </Route>
+
         <Route path="*" element={<PNF />} />
       </Routes>
       {!hideHF && <Footer />}

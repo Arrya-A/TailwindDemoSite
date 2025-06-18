@@ -61,6 +61,16 @@ const Header = ({ islanding }) => {
             </li>
             <li>
               <Link
+                to="/product"
+                className={`px-3 py-1 rounded-full ${
+                  currentTab === "/product" ? "bg-white text-emerald-500" : ""
+                }`}
+              >
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/contact"
                 className={`px-3 py-1 rounded-full ${
                   currentTab === "/contact" ? "bg-white text-emerald-500" : ""
@@ -111,6 +121,9 @@ const Header = ({ islanding }) => {
               </Link>
               <Link to="/project" onClick={toggleMenu}>
                 Our Projects
+              </Link>
+               <Link to="/project" onClick={toggleMenu}>
+                Products
               </Link>
               <Link to="/contact" onClick={toggleMenu}>
                 Contact Us
