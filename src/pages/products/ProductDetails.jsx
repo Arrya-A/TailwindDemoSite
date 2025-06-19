@@ -5,9 +5,6 @@ import { useLocation, useParams, useNavigate } from "react-router-dom";
 const ProductDetails = () => {
   const { id } = useParams();
   const { state: product } = useLocation();
-
-
-
   return (
     <div className="min-h-screen pt-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-white">
       <h1 className="text-2xl md:text-4xl font-semibold text-center mb-3">
