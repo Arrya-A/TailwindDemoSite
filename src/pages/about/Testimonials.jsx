@@ -2,7 +2,7 @@ import React from "react";
 
 const testimonials = [
   {
-    image: "src/images/team1.png",
+    image: "/images/team1.png",
     name: "Emily Johnson",
     designation: "Marketing Director",
     company: "GreenTech Solutions",
@@ -10,7 +10,7 @@ const testimonials = [
       "DigiCraft transformed our online presence with a stunning website and effective marketing strategies. Their team was professional, creative, and dedicated to our success. We highly recommend DigiCraft for any business seeking digital excellence.",
   },
   {
-    image: "src/images/team2.png",
+    image: "/images/team2.png",
     name: "Michael Lee",
     designation: "CEO",
     company: "GreenTech Solutions",
@@ -18,7 +18,7 @@ const testimonials = [
       "Working with DigiCraft was a game-changer for our brand. Their expertise in digital marketing helped us reach a wider audience and increase sales significantly. The team was responsive and innovative throughout the project",
   },
   {
-    image: "src/images/team3.png",
+    image: "/images/team3.png",
     name: "Martin",
     designation: "Founder",
     company: "Techwiz Solutions",

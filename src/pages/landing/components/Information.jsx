@@ -6,7 +6,7 @@ import Heading from "./Heading";
 
 const Information = () => {
   return (
-    <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start min-h-screen bg-[url('/src/images/bg.jpg')] bg-no-repeat bg-cover mt-16 px-4 sm:px-8">
+    <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start min-h-screen bg-[url('/images/bg.jpg')] bg-no-repeat bg-cover mt-16 px-4 sm:px-8">
       <div className="w-full lg:w-3/5 max-w-4xl pt-20 sm:pt-24 lg:pt-32">
         <div className="bg-white/70  p-6 sm:p-8 rounded-lg text-center lg:text-left">
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight ">

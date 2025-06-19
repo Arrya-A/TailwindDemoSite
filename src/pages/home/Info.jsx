@@ -44,7 +44,7 @@ const Info = () => {
             {/* Image */}
             <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
               <img
-                src="src/images/home.png"
+                src="/images/home.png"
                 alt="Hero"
                 className="w-full h-auto max-h-[500px] object-cover"
               />

@@ -38,7 +38,7 @@ const Info = () => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
             <img
-              src="src/images/about.png"
+              src="/images/about.png"
               className="w-full h-auto max-h-[500px] rounded-l-[3rem] rounded-br-[3rem] h-auto object-cover"
             />
           </div>

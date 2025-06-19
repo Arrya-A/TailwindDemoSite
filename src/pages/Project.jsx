@@ -8,12 +8,12 @@ import { motion } from "framer-motion";
 
 const Project = () => {
   const images = [
-    "/src/images/1.jfif",
-    "/src/images/2.jpg",
-    "/src/images/3.jpg",
-    "/src/images/4.png",
-    "/src/images/5.webp",
-    "/src/images/4.png",
+    "/images/1.jfif",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.png",
+    "/images/5.webp",
+    "/images/4.png",
   ];
 
   const scrollRef = useRef(null);

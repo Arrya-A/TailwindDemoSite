@@ -43,7 +43,7 @@ const Journey = () => {
       {/* Image Section */}
       <div className="w-full lg:w-1/2">
         <img
-          src="src/images/journey.jpg"
+          src="/images/journey.jpg"
           alt="Our Journey"
           className="max-h-[500px] w-full object-cover rounded-xl"
         />

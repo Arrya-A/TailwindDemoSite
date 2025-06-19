@@ -1,21 +1,21 @@
 const Team = () => {
   const teams = [
     {
-      image: "src/images/team1.png",
+      image: "/images/team1.png",
       name: "Alice Johnson",
       designation: "Creative Head",
       description:
         "Leads the creative team with a passion for innovative design and branding strategies.",
     },
     {
-      image: "src/images/team2.png",
+      image: "/images/team2.png",
       name: "Max Carlson",
       designation: "Lead Developer",
       description:
         "Specialises in web development, ensuring seamless, responsive digital experiences.",
     },
     {
-      image: "src/images/team3.png",
+      image: "/images/team3.png",
       name: "Michael Lee",
       designation: "Business Strategist",
       description: "Leads the business with online visibility and engagement.",
