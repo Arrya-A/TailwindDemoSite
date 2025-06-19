@@ -13,6 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
 import PNF from "./components/PNF";
 import PrivateRoute from "./components/PrivateRoute";
+import ProductDetails from "./pages/products/ProductDetails";
 import Products from "./pages/products/Products";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/project" element={<Project />} />
           <Route path="/product" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Route>
 
         <Route path="*" element={<PNF />} />
