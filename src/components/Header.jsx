@@ -2,6 +2,7 @@ import { faAtom, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Header = ({ islanding }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,45 +111,54 @@ const Header = ({ islanding }) => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
-          {isSignedIn && !islanding && (
-            <>
-              <Link to="/home" onClick={toggleMenu}>
-                Home
-              </Link>
-              <Link to="/aboutus" onClick={toggleMenu}>
-                About Us
-              </Link>
-              <Link to="/project" onClick={toggleMenu}>
-                Our Projects
-              </Link>
-               <Link to="/project" onClick={toggleMenu}>
-                Products
-              </Link>
-              <Link to="/contact" onClick={toggleMenu}>
-                Contact Us
-              </Link>
-            </>
-          )}
-
-          {isSignedIn ? (
-            <button
-              onClick={() => {
-                handleSignOut();
-                setIsOpen(false);
-              }}
-              className="bg-white text-emerald-500 rounded-full py-2 px-4"
-            >
-              Sign Out
-            </button>
-          ) : (
-            <Link to="/login" onClick={toggleMenu}>
-              <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
-                Sign In
+        <><motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+          <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
+            {isSignedIn && !islanding && (
+              <>
+                
+                  <Link to="/home" onClick={toggleMenu}>
+                    Home
+                  </Link>
+                  <Link to="/aboutus" onClick={toggleMenu}>
+                    About Us
+                  </Link>
+                  <Link to="/project" onClick={toggleMenu}>
+                    Our Projects
+                  </Link>
+                  <Link to="/project" onClick={toggleMenu}>
+                    Products
+                  </Link>
+                  <Link to="/contact" onClick={toggleMenu}>
+                    Contact Us
+                  </Link>
+              
+              </>
+            )}
+  
+            {isSignedIn ? (
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  setIsOpen(false);
+                }}
+                className="bg-white text-emerald-500 rounded-full py-2 px-4"
+              >
+                Sign Out
               </button>
-            </Link>
-          )}
-        </div>
+            ) : (
+              <Link to="/login" onClick={toggleMenu}>
+                <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
+                  Sign In
+                </button>
+              </Link>
+            )}
+          </div>
+            </motion.div>
+        </>
       )}
     </div>
   );
