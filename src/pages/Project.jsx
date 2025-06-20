@@ -1,9 +1,7 @@
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 
 const Project = () => {
@@ -16,37 +14,21 @@ const Project = () => {
     "/images/4.png",
   ];
 
-  const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const scrollToCenter = (index) => {
-    const container = scrollRef.current;
-    const child = container?.children[index];
-    if (child && container) {
-      const containerCenter = container.offsetWidth / 2;
-      const childCenter =
-        child.offsetLeft - container.offsetLeft + child.offsetWidth / 2;
-      container.scrollTo({
-        left: childCenter - containerCenter,
-        behavior: "smooth",
-      });
-    }
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0px",
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
+    ],
   };
-
-  const handleScroll = (direction) => {
-    let newIndex = activeIndex;
-    if (direction === "next" && activeIndex < images.length - 1) {
-      newIndex++;
-    } else if (direction === "prev" && activeIndex > 0) {
-      newIndex--;
-    }
-    setActiveIndex(newIndex);
-    scrollToCenter(newIndex);
-  };
-
-  useEffect(() => {
-    scrollToCenter(activeIndex);
-  }, []);
 
   return (
     <motion.div
@@ -55,55 +37,29 @@ const Project = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="p-8 pt-20 sm:px-8 md:px-12 lg:px-16 bg-white relative overflow-hidden">
-        <h4 className="text-lg sm:text-xl font-semibold text-emerald-500 py-2">
+      <section className="pt-12 pb-12 px-4 md:px-16 w-full bg-white">
+        <h4 className="text-lg sm:text-xl font-semibold text-emerald-500">
           PROJECT
         </h4>
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
           Our Project
         </h1>
-        <h1 className="text-xl sm:text-2xl md:text-3xl">Gallery.</h1>
-
-        <div className="relative mt-6">
-          <div
-            ref={scrollRef}
-            className="flex overflow-x-scroll overflow-y-hidden space-x-6 snap-x snap-mandatory px-8 no-scrollbar"
-          >
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className={`shrink-0 snap-center transition-all duration-300 rounded-xl shadow-lg ${
-                  index === activeIndex
-                    ? "w-72 h-96 scale-105 z-10"
-                    : "w-60 h-80 opacity-60 scale-95"
-                }`}
-              >
-                <img
-                  src={img}
-                  alt={`slide-${index}`}
-                  className="w-full h-full object-cover rounded-xl"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Prev Button */}
-          <button
-            onClick={() => handleScroll("prev")}
-            className="absolute top-1/2 left-0 -translate-y-1/2 bg-emerald-500 text-white p-2 rounded-full shadow-md hover:bg-emerald-700 z-20"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-
-          {/* Next Button */}
-          <button
-            onClick={() => handleScroll("next")}
-            className="absolute top-1/2 right-0 -translate-y-1/2 bg-emerald-500 text-white p-2 rounded-full shadow-md hover:bg-emerald-700 z-20"
-          >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
-        </div>
-      </div>
+        <h1 className="text-xl sm:text-2xl md:text-3xl pb-6">Gallery.</h1>
+        <Slider {...settings}>
+          {images.map((img, index) => (
+            <div key={index} className="flex flex-col items-center px-20">
+              <img
+                src={img}
+                alt={`Slide ${index + 1}`}
+                className="h-[200px] w-[200px] object-cover rounded-xl transition-transform transform hover:scale-105 duration-300"
+              />
+              <h3 className="text-center mt-3 font-medium text-gray-700">
+                Project {index + 1}
+              </h3>
+            </div>
+          ))}
+        </Slider>
+      </section>
     </motion.div>
   );
 };

@@ -7,7 +7,7 @@ const Section1 = () => {
 
   return (
     <>
-      <div className="relative overflow-hidden py-3 px-0 ">
+      <div className="relative overflow-hidden py-3 px-0">
         <motion.div
           className="absolute inset-0 bg-emerald-500 z-0"
           initial={{ x: "100%" }}
