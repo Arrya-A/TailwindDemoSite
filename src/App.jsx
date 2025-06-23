@@ -19,7 +19,11 @@ import Dummy from "./components/Dummy";
 
 function App() {
   const location = useLocation();
+  //useLocation --> It returns an object that contains info about the current URL
+
   const hideHF = ["/login", "/register"].includes(location.pathname);
+  //location.pathname -->  Gives the current URL path (like /login, /dashboard, etc.) from useLocation() in react-router-dom.
+
   const hideCursor = ["/login", "/register"].includes(location.pathname);
   return (
     <>
@@ -31,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoute />}>
+        
           <Route path="/home" element={<Home />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/contact" element={<Contact />} />

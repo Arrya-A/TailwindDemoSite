@@ -8,7 +8,7 @@ const Section1 = () => {
 
   return (
     <>
-     <Parallax speed={20}>
+   
         <div className="relative overflow-hidden py-3 px-0">
           <motion.div
             className="absolute inset-0 bg-emerald-500 z-0"
@@ -40,7 +40,6 @@ const Section1 = () => {
             </div>
           </div>
         </motion.div>
-     </Parallax>
     </>
   );
 };

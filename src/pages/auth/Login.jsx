@@ -46,6 +46,7 @@ const Login = () => {
       setLoginerror(message);
     }
   };
+
   return (
     <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700">
@@ -90,13 +91,13 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-emerald-500 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-md transition"
+              className="w-full bg-emerald-500 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-md "
             >
               Sign In
             </button>
             {loginerror && <p className="text-red-500">{loginerror}</p>}
             <p className="text-sm text-center">
-              New User?{" "}
+              New User?
               <Link to="/register" className="text-emerald-500 hover:underline">
                 Sign Up here
               </Link>

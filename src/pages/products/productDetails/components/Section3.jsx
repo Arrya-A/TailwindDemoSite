@@ -11,7 +11,10 @@ const Section3 = () => {
           <h1 className="text-xl md:text-2xl font-semibold pb-4 text-emerald-500">
             How Does {product.productName} Work?
           </h1>
-          <p className="">{product.working}</p>
+          <p className="pb-5">{product.working}</p>
+          <button className="bg-emerald-500 hover:bg-emerald-700 text-white rounded-full py-2 px-6 text-sm sm:text-base">
+            Purchase Package
+          </button>
         </div>
         <img
           src={product.image}
