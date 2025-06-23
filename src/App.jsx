@@ -13,7 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Cursor from "./components/Cursor";
 import PNF from "./components/PNF";
 import PrivateRoute from "./components/PrivateRoute";
-import ProductDetails from "./pages/products/ProductDetails";
+import ProductDetails from "./pages/products/productDetails/ProductDetails";
 import Products from "./pages/products/Products";
 import Dummy from "./components/Dummy";
 
@@ -38,7 +38,6 @@ function App() {
           <Route path="/product" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetails />} />
         </Route>
-        <Route path="d" element={<Dummy />} />
         <Route path="*" element={<PNF />} />
       </Routes>
       {!hideHF && <Footer />}
