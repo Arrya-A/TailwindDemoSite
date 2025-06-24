@@ -19,7 +19,6 @@ const loginSchema = yup.object().shape({
 const Login = () => {
   const { loginUser } = useAuth();
   const [loginerror, setLoginerror] = useState("");
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -40,7 +39,8 @@ const Login = () => {
       localStorage.setItem("accessToken", token);
       console.log("accessToken :", token);
       setTimeout(() => {
-        navigate("/home");
+        // navigate("/home",{ replace: true });
+        window.location.replace("/home");
       }, 2000);
     } else {
       setLoginerror(message);

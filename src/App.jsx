@@ -15,7 +15,7 @@ import PNF from "./components/PNF";
 import PrivateRoute from "./components/PrivateRoute";
 import ProductDetails from "./pages/products/productDetails/ProductDetails";
 import Products from "./pages/products/Products";
-import Dummy from "./components/Dummy";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
   const location = useLocation();
@@ -32,10 +32,23 @@ function App() {
       {!hideHF && <Header />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
         <Route element={<PrivateRoute />}>
-        
           <Route path="/home" element={<Home />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/contact" element={<Contact />} />

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const Info = () => {
   return (
     <motion.div
-      className="pt-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-white"
+      className="py-8 px-4 sm:px-8 md:px-12 lg:px-16 bg-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

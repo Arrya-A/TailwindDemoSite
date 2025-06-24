@@ -36,11 +36,11 @@ const Testimonials = () => {
       <p className="text-center py-4 text-gray-600">
         Trusted by top brands worldwide — see what they say about us.
       </p>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 py-8 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 py-8">
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300"
+            className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300  hover:scale-105"
           >
             <div className="flex mb-2">
               <img
