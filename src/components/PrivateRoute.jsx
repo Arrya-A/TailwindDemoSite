@@ -5,7 +5,7 @@ const PrivateRoute = () => {
   const location = useLocation();
 
   return isAuthenticated ? (
-    <Outlet />
+    <Outlet /> // means Render the child routes nested under this route
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />
   );

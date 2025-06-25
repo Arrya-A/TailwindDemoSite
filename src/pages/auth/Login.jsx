@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
 import { useForm } from "react-hook-form";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const defaultValues = {
   email: "",
@@ -19,6 +21,10 @@ const loginSchema = yup.object().shape({
 const Login = () => {
   const { loginUser } = useAuth();
   const [loginerror, setLoginerror] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => setShowPassword((currentValue) => !currentValue);
+
   const {
     register,
     handleSubmit,
@@ -48,7 +54,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700">
         <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -72,9 +78,9 @@ const Login = () => {
                 </p>
               )}
             </div>
-            <div>
+            <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 {...register("password")}
                 className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
@@ -83,12 +89,20 @@ const Login = () => {
                     : "border-gray-300"
                 }`}
               />
+              <button
+                type="button"
+                onClick={togglePassword}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500 focus:outline-none"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
               {errors.password && (
                 <p className="text-sm text-red-500 mt-1">
                   {errors.password.message}
                 </p>
               )}
             </div>
+
             <button
               type="submit"
               className="w-full bg-emerald-500 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-md "
@@ -111,7 +125,7 @@ const Login = () => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

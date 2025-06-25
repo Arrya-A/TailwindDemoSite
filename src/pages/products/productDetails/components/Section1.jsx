@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
 const Section1 = () => {
   const { state: product } = useLocation();
-  console.log(product);
 
   return (
     <>

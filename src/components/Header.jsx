@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const Header = ({ islanding }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const currentTab = location.pathname;
@@ -28,7 +28,7 @@ const Header = ({ islanding }) => {
         </div>
 
         {/* signed-in and not landing */}
-        {isSignedIn && !islanding && (
+        {isSignedIn && (
           <ul className="hidden md:flex space-x-6">
             <li>
               <Link
@@ -83,7 +83,7 @@ const Header = ({ islanding }) => {
           </ul>
         )}
 
-        {/* Desktop  */}
+        {/* Desktop signin hidden  */}
         <div className="hidden md:flex items-center space-x-4">
           {isSignedIn ? (
             <button
@@ -111,15 +111,15 @@ const Header = ({ islanding }) => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <><motion.div
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-          <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
-            {isSignedIn && !islanding && (
-              <>
-                
+        <>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="md:hidden flex flex-col items-center bg-emerald-500 text-white py-4 space-y-4 text-sm font-medium">
+              {isSignedIn && (
+                <>
                   <Link to="/home" onClick={toggleMenu}>
                     Home
                   </Link>
@@ -135,29 +135,28 @@ const Header = ({ islanding }) => {
                   <Link to="/contact" onClick={toggleMenu}>
                     Contact Us
                   </Link>
-              
-              </>
-            )}
-  
-            {isSignedIn ? (
-              <button
-                onClick={() => {
-                  handleSignOut();
-                  setIsOpen(false);
-                }}
-                className="bg-white text-emerald-500 rounded-full py-2 px-4"
-              >
-                Sign Out
-              </button>
-            ) : (
-              <Link to="/login" onClick={toggleMenu}>
-                <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
-                  Sign In
+                </>
+              )}
+
+              {isSignedIn ? (
+                <button
+                  onClick={() => {
+                    handleSignOut();
+                    setIsOpen(false);
+                  }}
+                  className="bg-white text-emerald-500 rounded-full py-2 px-4"
+                >
+                  Sign Out
                 </button>
-              </Link>
-            )}
-          </div>
-            </motion.div>
+              ) : (
+                <Link to="/login" onClick={toggleMenu}>
+                  <button className="bg-white text-emerald-500 rounded-full py-2 px-4">
+                    Sign In
+                  </button>
+                </Link>
+              )}
+            </div>
+          </motion.div>
         </>
       )}
     </div>

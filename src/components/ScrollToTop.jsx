@@ -7,6 +7,7 @@ const ScrollToTop = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
+      behavior: "smooth",
     });
   }, [pathname]);
 
@@ -14,3 +15,13 @@ const ScrollToTop = () => {
 };
 
 export default ScrollToTop;
+
+// const  location  = useLocation();
+// You're trying to assign the whole object returned by useLocation() to a variable named location.
+// {
+//   pathname: "/login",
+//   search: "",
+//   hash: "",
+//   state: null,
+//   key: "randomKey"
+// }

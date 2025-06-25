@@ -19,6 +19,7 @@ const Footer = () => {
             inventore.
           </p>
         </div>
+
         <div className="lg:col-span-2">
           <h1 className=" font-bold mb-2">Service</h1>
           <ul className="space-y-1 ">
@@ -27,6 +28,7 @@ const Footer = () => {
             <li>WordPress</li>
           </ul>
         </div>
+
         <div className="lg:col-span-2">
           <h1 className=" font-bold mb-2">About Us</h1>
           <ul className="space-y-1 ">
@@ -35,6 +37,7 @@ const Footer = () => {
             <li>Portfolio</li>
           </ul>
         </div>
+
         <div className="lg:col-span-3">
           <h1 className=" font-bold mb-2">Our Address</h1>
           <p>Bangladesh, India</p>

@@ -4,12 +4,13 @@ const Cursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const move = (e) => {
+    const handleMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      // e.clientX and e.clientY are the cursor's position within the viewport.
     };
 
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
