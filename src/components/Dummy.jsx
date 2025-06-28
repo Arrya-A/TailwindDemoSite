@@ -1,36 +1,21 @@
 import axiosInstance from "../../../utils/AxiosInstance";
 
 const useAuth = () => {
-  const loginUser = async ({ email, password }) => {
+  const loginUser = async (inputData) => {
+    const reqData = new FormData();
+    reqData.append("email", inputData.email);
+    reqData.append("password", inputData.password);
     try {
-      const { status, data } = await axiosInstance.post("/login", {
-        email,
-        password,
-      });
-
+      const { status, data } = await axiosInstance.post("/login", reqData);
       if (status === 200) {
-        const { access_token } = data;
-        return {
-          success: true,
-          token: access_token,
-        };
-      } else {
-        return {
-          success: false,
-          message: data?.message || "Login failed",
-        };
+        localStorage.setItem("token", data.access_token);
+        console.log(data.message);
       }
     } catch (err) {
-      console.error("login error", err);
-      return {
-        success: false,
-        message:
-          err?.response?.data?.message || err.message || "Login failed",
-      };
+      console.log("login error", err);
     }
   };
-
-  return { loginUser };
+  return loginUser;
 };
 
 export default useAuth;
