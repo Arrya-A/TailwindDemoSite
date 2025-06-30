@@ -20,7 +20,7 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = () => {
-  const loginUser = useAuth();
+  const { loginUser } = useAuth();
   const [loginerror, setLoginerror] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();

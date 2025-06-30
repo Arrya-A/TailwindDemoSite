@@ -14,6 +14,24 @@ const useAuth = () => {
       console.log(err);
     }
   };
-  return loginUser;
+
+  const registerUser = async (inputData) => {
+    const reqData = new FormData();
+    Object.entries(inputData).forEach(([k, v]) => {
+      if (Boolean(v)) {
+        reqData.append(k, v);
+      }
+    });
+    try {
+      const { status, data } = await axiosInstance.post("/register", reqData);
+      if (status === 200) {
+        console.log("registeration success", data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return { loginUser, registerUser };
 };
 export default useAuth;
