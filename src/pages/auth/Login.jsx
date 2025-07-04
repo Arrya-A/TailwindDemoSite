@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
@@ -117,7 +117,9 @@ const Login = () => {
               </button>
 
               {loginerror && <p className="text-red-500">{loginerror}</p>}
-              <p className="text-sm text-center">New User? Sign Up here</p>
+              <p className="text-sm text-center">
+                New User? Sign Up <Link to={"/register"}>here</Link>
+              </p>
             </div>
           </FormProvider>
         </div>

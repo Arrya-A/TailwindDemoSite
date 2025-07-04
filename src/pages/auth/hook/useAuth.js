@@ -23,10 +23,11 @@ const useAuth = () => {
       }
     });
     try {
-      const { status, data } = await axiosInstance.post("/register", reqData);
-      if (status === 200) {
-        console.log("registeration success", data);
+      const response = await axiosInstance.post("/register", reqData);
+      if (response.status === 200) {
+        console.log("registration success", response.data);
       }
+      return response;
     } catch (err) {
       console.log(err);
     }

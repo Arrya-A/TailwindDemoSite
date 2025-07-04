@@ -1,24 +1,29 @@
 import { useForm } from "react-hook-form";
 import FormProvider from "../../utils/FormProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
+import { toast } from "react-toastify";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
   email: yup.string().email("Invalid Email").required("Email is required"),
   password: yup.string().required("Password is required"),
-  confirmPassword: yup.string().required("Confirm Password is required"),
+  confirm_password: yup
+    .string()
+    .oneOf([yup.ref("password")], "Passwords must match")
+    .required("Confirm Password is required"),
   address: yup.string().required("Address is required"),
   country: yup.string().required("Country is required"),
-  zipCode: yup.string().required("ZipCode is required"),
-  vat: yup.string().required("vat is required"),
-  idCode: yup.string().required("ID Code is required"),
+  zipcode: yup.string().required("ZipCode is required"),
+  vat_number: yup.string().required("vat is required"),
+  id_code: yup.string().required("ID Code is required"),
   referral: yup.string().required("Referral is required"),
 });
 
 const Register = () => {
+  const navigate = useNavigate();
   const { registerUser } = useAuth();
   const methods = useForm({
     resolver: yupResolver(registerSchema),
@@ -29,28 +34,20 @@ const Register = () => {
     formState: { errors },
   } = methods;
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
     try {
-      const response= await registerUser(data);
-      console.log(response);
-      
+      const { data, status } = await registerUser(formData);
+      console.log(data);
+      if (status == 200) {
+        toast.success("Registration successfull");
+        navigate("/login");
+      } else {
+        toast.error("Registration failed. Please try again");
+      }
     } catch (err) {
       console.log(err);
     }
   };
-//  try {
-//     const res = await registerUser(data);
-//     if (res?.success) {
-//       toast.success("Registration successful! Please log in.");
-//       setTimeout(() => navigate("/login"), 2000); // Navigate after toast
-//     } else {
-//       toast.error("Registration failed. Please try again.");
-//     }
-//   } catch (err) {
-//     console.log(err);
-//     toast.error("An error occurred during registration.");
-//   }
   return (
     <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700 ">
@@ -115,16 +112,50 @@ const Register = () => {
                 <input
                   type="password"
                   placeholder="Confirm password"
-                  {...register("confirmPassword")}
+                  {...register("confirm_password")}
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                    errors.confirmPassword
+                    errors.confirm_password
                       ? "border-red-500 ring-red-200"
                       : "border-gray-300"
                   }`}
                 />
-                {errors.confirmPassword && (
+                {errors.confirm_password && (
                   <p className="text-sm text-red-500 mt-1">
-                    {errors.confirmPassword.message}
+                    {errors.confirm_password.message}
+                  </p>
+                )}
+              </div>
+              {/* <div>
+                <input
+                  type="date"
+                  placeholder="Date of Birth"
+                  {...register("date_of_birth")}
+                  className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+                    errors.date_of_birth
+                      ? "border-red-500 ring-red-200"
+                      : "border-gray-300"
+                  }`}
+                />
+                {errors.date_of_birth && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {errors.date_of_birth.message}
+                  </p>
+                )}
+              </div> */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="gender"
+                  {...register("gender")}
+                  className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
+                    errors.gender
+                      ? "border-red-500 ring-red-200"
+                      : "border-gray-300"
+                  }`}
+                />
+                {errors.gender && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {errors.gender.message}
                   </p>
                 )}
               </div>
@@ -183,16 +214,16 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="Zip Code"
-                  {...register("zipCode")}
+                  {...register("zipcode")}
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                    errors.zipCode
+                    errors.zipcode
                       ? "border-red-500 ring-red-200"
                       : "border-gray-300"
                   }`}
                 />
-                {errors.zipCode && (
+                {errors.zipcode && (
                   <p className="text-sm text-red-500 mt-1">
-                    {errors.zipCode.message}
+                    {errors.zipcode.message}
                   </p>
                 )}
               </div>
@@ -201,16 +232,16 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="Vat Number"
-                  {...register("vat")}
+                  {...register("vat_number")}
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                    errors.vat
+                    errors.vat_number
                       ? "border-red-500 ring-red-200"
                       : "border-gray-300"
                   }`}
                 />
-                {errors.vat && (
+                {errors.vat_number && (
                   <p className="text-sm text-red-500 mt-1">
-                    {errors.vat.message}
+                    {errors.vat_number.message}
                   </p>
                 )}
               </div>
@@ -218,16 +249,16 @@ const Register = () => {
                 <input
                   type="text"
                   placeholder="ID Code"
-                  {...register("idCode")}
+                  {...register("id_code")}
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                    errors.idCode
+                    errors.id_code
                       ? "border-red-500 ring-red-200"
                       : "border-gray-300"
                   }`}
                 />
-                {errors.idCode && (
+                {errors.id_code && (
                   <p className="text-sm text-red-500 mt-1">
-                    {errors.idCode.message}
+                    {errors.id_code.message}
                   </p>
                 )}
               </div>
