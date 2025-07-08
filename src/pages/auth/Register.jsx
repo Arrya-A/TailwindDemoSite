@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
-import { toast } from "react-toastify";
+import { useSnackbar } from "notistack";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -23,6 +23,7 @@ const registerSchema = yup.object().shape({
 });
 
 const Register = () => {
+  const {enqueueSnackbar}= useSnackbar()
   const navigate = useNavigate();
   const { registerUser } = useAuth();
   const methods = useForm({
@@ -39,10 +40,10 @@ const Register = () => {
       const { data, status } = await registerUser(formData);
       console.log(data);
       if (status == 200) {
-        toast.success("Registration successfull");
+        enqueueSnackbar("Registration successful", {variant:"success"});
         navigate("/login");
       } else {
-        toast.error("Registration failed. Please try again");
+        enqueueSnackbar("Registration failed. Please try again", {variant:"error"});
       }
     } catch (err) {
       console.log(err);

@@ -4,10 +4,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
 import { useForm } from "react-hook-form";
-import { Bounce, toast, ToastContainer } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import FormProvider from "../../utils/FormProvider";
+import { useSnackbar } from "notistack";
 
 const defaultValues = {
   email: "",
@@ -20,6 +20,7 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const { loginUser } = useAuth();
   const [loginerror, setLoginerror] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -44,15 +45,15 @@ const Login = () => {
       await loginUser(data);
       const token = localStorage.getItem("accessToken");
       if (token) {
-        toast.success("Login successful");
+        enqueueSnackbar("Login successful", { variant: "success" });
         navigate("/home");
       } else {
         setLoginerror("Invalid credentials");
-        toast.error("Login failed");
+        enqueueSnackbar("Login failed", { variant: "error" });
       }
     } catch (err) {
       console.error(err);
-      toast.error("error");
+      enqueueSnackbar("error", { variant: "error" });
     }
   };
 
@@ -124,12 +125,6 @@ const Login = () => {
           </FormProvider>
         </div>
       </div>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        transition={Bounce}
-      />
     </>
   );
 };
