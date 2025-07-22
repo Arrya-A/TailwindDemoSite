@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import FormProvider from "../../utils/FormProvider";
 import { useSnackbar } from "notistack";
+import ParticlesBackground from "../../utils/Particles";
 
 const defaultValues = {
   email: "",
@@ -59,8 +60,9 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700">
-        <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
+      <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-100 to-emerald-700">
+        <ParticlesBackground />
+        <div className="relative z-10 w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold text-center text-emerald-500">
@@ -119,7 +121,13 @@ const Login = () => {
 
               {loginerror && <p className="text-red-500">{loginerror}</p>}
               <p className="text-sm text-center">
-                New User? Sign Up <Link to={"/register"}>here</Link>
+                New User?{" "}
+                <Link
+                  to={"/register"}
+                  className="text-emerald-500 hover:underline"
+                >
+                  Sign Up here
+                </Link>
               </p>
             </div>
           </FormProvider>

@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "./hook/useAuth";
 import { useSnackbar } from "notistack";
+import ParticlesBackground from "../../utils/Particles";
 
 const registerSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -23,7 +24,7 @@ const registerSchema = yup.object().shape({
 });
 
 const Register = () => {
-  const {enqueueSnackbar}= useSnackbar()
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const { registerUser } = useAuth();
   const methods = useForm({
@@ -40,10 +41,12 @@ const Register = () => {
       const { data, status } = await registerUser(formData);
       console.log(data);
       if (status == 200) {
-        enqueueSnackbar("Registration successful", {variant:"success"});
+        enqueueSnackbar("Registration successful", { variant: "success" });
         navigate("/login");
       } else {
-        enqueueSnackbar("Registration failed. Please try again", {variant:"error"});
+        enqueueSnackbar("Registration failed. Please try again", {
+          variant: "error",
+        });
       }
     } catch (err) {
       console.log(err);
@@ -51,8 +54,9 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700 ">
-        <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
+      <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-700 ">
+        <ParticlesBackground />
+        <div className="relative z-10 w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-6">
               <h2 className="text-emerald-500 text-2xl font-semibold text-center ">
