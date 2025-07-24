@@ -7,7 +7,8 @@ const PrivateRoute = () => {
   return isAuthenticated ? (
     <Outlet /> // means Render the child routes nested under this route
   ) : (
-    <Navigate to="/login" state={{ from: location }} replace />
+    <Navigate to="/login" state={{ from: location }} replace /> 
+    //state={{ from: location }} ->	Stores original path so user can return after login
   );
 };
 

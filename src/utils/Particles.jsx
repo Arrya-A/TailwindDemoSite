@@ -22,17 +22,18 @@ const ParticlesBackground = () => {
     () => ({
       particles: {
         color: {
-          //   value: "#00c59e", // Vibrant teal for web theme
+          //   value: "#00c59e",
           value: "#ffffffff",
         },
         links: {
           enable: true,
           distance: 120,
-          //   color: "#00c59e", // Matching teal for cohesive look
+          //   color: "#00c59e", 
           color: "#ffffffff",
           opacity: 0.3,
           width: 1,
         },
+        // links: { enable: false },
         move: {
           enable: true,
           speed: 1.5,
@@ -63,7 +64,7 @@ const ParticlesBackground = () => {
           },
         },
         shape: {
-          type: ["circle", "triangle"], // Mix of circle and triangle for dynamic web aesthetic
+          type: ["circle", "polygon"],
         },
         size: {
           value: { min: 1, max: 6 },
